@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:product_test/application/di/app_locator.dart';
 
 import '../presentation/screens/home_screen.dart';
 
@@ -12,6 +13,7 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   void initState() {
+    AppLocator.init();
     super.initState();
   }
 
@@ -28,6 +30,7 @@ class _ApplicationState extends State<Application> {
 
   @override
   void dispose() {
+    AppLocator.dispose();
     super.dispose();
   }
 }
