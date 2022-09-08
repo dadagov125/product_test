@@ -43,9 +43,14 @@ class _ProductsScreenContentState extends State<_ProductsScreenContent> {
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(),
           body: ProductsGrid(
             controller: _scrollController,
             products: state.products,
+            onRemove: (id) {
+              final productBloc = context.read<ProductBloc>();
+              productBloc.add(RemoveProductsEvent(id));
+            },
           ),
         );
       },

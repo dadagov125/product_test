@@ -37,8 +37,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<RemoveProductsEvent>((event, emit) async {
       emit(ProductLoadingState.fromState(state));
       await _productRepository.removeProduct(event.id);
-      emit(
-          ProductState(totalCount: state.totalCount, products: state.products));
+      final products = state.products.toList()
+        ..removeWhere((element) => element.id == event.id);
+      emit(ProductState(totalCount: state.totalCount, products: products));
+      if (products.length < 20) add(LoadProductsEvent());
     });
   }
 }
