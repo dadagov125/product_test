@@ -43,7 +43,21 @@ class _ProductsScreenContentState extends State<_ProductsScreenContent> {
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            actions: [
+              Container(
+                width: 40,
+                height: 40,
+                child: InkWell(
+                  onTap: () {
+                    final productBloc = context.read<ProductBloc>();
+                    productBloc.add(CreateProductsEvent());
+                  },
+                  child: Icon(Icons.add),
+                ),
+              )
+            ],
+          ),
           body: ProductsGrid(
             controller: _scrollController,
             products: state.products,

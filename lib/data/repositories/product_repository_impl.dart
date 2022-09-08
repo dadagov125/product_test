@@ -36,7 +36,7 @@ class ProductRepositoryImpl extends ProductRepository {
   @override
   Future<ProductModel> createProduct() async {
     final product = generateProduct();
-    _remoteProducts.add(product);
+    _remoteProducts.insert(0, product);
     return product;
   }
 
