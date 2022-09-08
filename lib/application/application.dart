@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_test/application/di/app_locator.dart';
 
-import '../presentation/screens/home_screen.dart';
+import '../presentation/screens/products_screen.dart';
 
 class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _ApplicationState extends State<Application> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(title: 'Flutter Demo Home Page'),
+      home: const ProductsScreen(),
     );
   }
 
